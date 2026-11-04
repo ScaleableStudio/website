@@ -1,12 +1,13 @@
-# Publishes the sidebox/ folder to GitHub Pages at sidebox.scalablestudio.online.
-# Runs on every push to main that changes sidebox/, or by hand from the Actions tab.
-# home/ is not published from this repository (it moves to ScaleableStudio.github.io).
+# Publishes SideBOX to GitHub Pages at sidebox.scalablestudio.online.
+# Runs on every push to main that changes sidebox/ (uploads and deletes on github.com included), or by hand.
+# .github/scripts/build-site.js rebuilds the folder list and each folder's page list from what is in the repo,
+# so pages appear and disappear with the files. home/ is not published from this repository.
 name: SideBOX to Pages
 
 on:
   push:
     branches: [main]
-    paths: ["sidebox/**", ".github/workflows/sidebox-pages.yml"]
+    paths: ["sidebox/**", ".github/workflows/sidebox-pages.yml", ".github/scripts/build-site.js"]
   workflow_dispatch:
 
 permissions:
@@ -26,9 +27,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Build lists from the repository
+        run: node .github/scripts/build-site.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: sidebox
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4

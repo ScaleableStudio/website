@@ -1,0 +1,27 @@
+{
+  "sowing-faith-vboard-1k.html": {
+    "description": "Plantable prayer cards: the first vision board, built 2026-11-03 from the bus1idea blueprint.",
+    "order": 6
+  },
+  "the_gospel_unified_electric_purple_vision-board.html": {
+    "description": "The same unified board in electric purple.",
+    "order": 2
+  },
+  "romans_1-11_electric-cyan_vision-board.html": {
+    "description": "Romans chapters 1–11, King James Version.",
+    "order": 3
+  },
+  "ephesians_1-3_electric-cyan_vision-board.html": {
+    "description": "Ephesians chapters 1–3, King James Version.",
+    "order": 4
+  },
+  "colossians_1-2_electric-cyan_vision-board.html": {
+    "description": "Colossians chapters 1–2, King James Version.",
+    "order": 5
+  },
+  "isaiah_43_18-19_biblical_covenant_hero_updated.html": {
+    "description": "Interactive Biblical Covenant board on Isaiah 43:18–19, KJV.",
+    "listed": false,
+    "note": "Clean Sinner brand page; awaiting Ken on charter rule 8"
+  }
+}
