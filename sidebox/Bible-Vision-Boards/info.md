@@ -1,1 +1,1 @@
-folder from "sidebox.scaleablestudio.online"
+folder from "sidebox.scalablestudio.online"

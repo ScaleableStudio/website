@@ -1,0 +1,34 @@
+# Publishes the sidebox/ folder to GitHub Pages at sidebox.scalablestudio.online.
+# Runs on every push to main that changes sidebox/, or by hand from the Actions tab.
+# home/ is not published from this repository (it moves to ScaleableStudio.github.io).
+name: SideBOX to Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ["sidebox/**", ".github/workflows/sidebox-pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: sidebox
+      - id: deployment
+        uses: actions/deploy-pages@v4

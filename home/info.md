@@ -1,1 +1,1 @@
-target url = scaleablestudio.online
+target url = scalablestudio.online

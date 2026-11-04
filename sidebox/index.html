@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SideBOX — Signal Chamber</title>
+<meta name="description" content="SideBOX is the testing, proving and development ground for anything digital for Scaleable Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Sora:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.4 system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<style>
+:root{--void:#071116;--deep:#0c1b22;--glass:#10252c;--mineral:#edf4ef;--mist:#9db0ad;--rail:#24434a;--coral:#ff654f;--acid:#c7ff4a;--cyan:#61d7df;--display:"Bodoni Moda",Georgia,serif;--body:"Sora","Segoe UI",sans-serif;--mono:"IBM Plex Mono",Consolas,monospace;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}[hidden]{display:none!important}body{margin:0;background:var(--void);color:var(--mineral);font:400 15px/1.65 var(--body);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 0 48%,rgb(97 215 223/.035) 48.1% 48.35%,transparent 48.45%),radial-gradient(circle at 73% 9%,rgb(255 101 79/.16),transparent 25%),radial-gradient(circle at 8% 82%,rgb(199 255 74/.09),transparent 27%);z-index:-2}
+.grain{position:fixed;inset:0;z-index:-1;opacity:.2;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E")}
+.shell{width:min(1180px,calc(100% - 32px));margin:auto;padding:24px 0 72px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 0 22px;border-bottom:1px solid var(--rail);font:500 11px/1 var(--mono);letter-spacing:.13em;text-transform:uppercase}.home{color:var(--mineral);text-decoration:none}.home:hover,.home:focus-visible{color:var(--acid)}.domain{color:var(--mist)}.live{display:flex;gap:8px;align-items:center;color:var(--acid)}.live:before{content:"";width:7px;height:7px;background:var(--acid);border-radius:50%;box-shadow:0 0 16px var(--acid)}
+.hero{min-height:88vh;display:grid;grid-template-columns:minmax(0,.82fr) minmax(420px,1.18fr);gap:34px;align-items:center;padding:56px 0}.eyebrow,.kicker{font:500 11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}.hero h1{font:700 clamp(4.4rem,12vw,10rem)/.73 var(--display);letter-spacing:-.075em;margin:18px 0 30px;max-width:5.7ch}.hero h1 span{display:block;margin-left:.56em;color:transparent;-webkit-text-stroke:1px var(--mineral)}.hero-copy{max-width:48ch;font-size:clamp(1rem,1.4vw,1.18rem);color:var(--mist)}.hero-copy strong{color:var(--mineral);font-weight:500}
+.hero-stage{position:relative;min-height:660px;border:1px solid var(--rail);background:linear-gradient(145deg,rgb(10 26 33/.78),rgb(3 10 14/.94));clip-path:polygon(0 7%,7% 0,100% 0,100% 93%,93% 100%,0 100%)}#hero3d{display:block;width:100%;height:660px}.fallback{position:absolute;inset:0;display:grid;place-items:center;padding:30px;text-align:center;color:var(--mist)}.stage-tag{position:absolute;left:20px;bottom:18px;font:400 10px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--mist)}
+.frame{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid var(--rail);margin:0 0 26px}.frame>div{padding:28px 24px}.frame>div+div{border-left:1px solid var(--rail)}.frame b{display:block;margin-bottom:9px;font:500 11px var(--mono);color:var(--acid);text-transform:uppercase;letter-spacing:.12em}.frame p{margin:0;color:var(--mist)}
+.boards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.board{position:relative;padding:28px;border:1px solid var(--rail);background:linear-gradient(150deg,rgb(16 37 44/.7),rgb(8 20 26/.82));overflow:hidden}.board.wide{grid-column:1/-1}.board:after{content:"";position:absolute;width:90px;height:90px;right:-46px;top:-46px;border:1px solid var(--rail);transform:rotate(45deg)}.board h2{font:500 clamp(1.8rem,3vw,3rem)/1 var(--display);letter-spacing:-.035em;margin:10px 0 12px}.intro{color:var(--mist);max-width:64ch;margin:0 0 22px}.links{display:grid;gap:10px}.linkcard{display:grid;grid-template-columns:36px 1fr auto;gap:14px;align-items:center;padding:14px;border:1px solid var(--rail);color:var(--mineral);text-decoration:none;background:rgb(7 17 22/.55);transition:.22s ease}.linkcard:hover{transform:translateX(6px);border-color:var(--cyan)}.linkcard[aria-disabled="true"]{opacity:.58;cursor:not-allowed}.linkcard b{font-weight:500}.linkcard small{display:block;color:var(--mist);font:400 10px var(--mono);text-transform:uppercase;letter-spacing:.08em}.glyph{font:500 11px var(--mono);color:var(--coral)}.arrow{color:var(--acid)}
+footer{display:flex;justify-content:space-between;gap:22px;margin-top:26px;padding-top:20px;border-top:1px solid var(--rail);color:var(--mist);font:400 10px/1.5 var(--mono);text-transform:uppercase;letter-spacing:.08em}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:38px}.hero-stage{min-height:520px}#hero3d{height:520px}.boards{grid-template-columns:1fr}.board.wide{grid-column:auto}.frame{grid-template-columns:1fr}.frame>div+div{border-left:0;border-top:1px solid var(--rail)}}@media(max-width:520px){.shell{width:min(100% - 24px,1180px)}.hero h1{font-size:4.1rem}.hero-stage{min-height:430px}#hero3d{height:430px}.board{padding:21px}.frame>div{padding:22px 16px}footer{display:grid}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.linkcard{transition:none}}
+</style>
+<div class="grain" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="art-sidebox" viewBox="0 0 150 72"> <path fill="currentColor" d="M10 12h86v7H17v12h69c14 0 22 7 22 19s-8 18-23 18H10v-7h75c10 0 15-3 15-11s-5-12-15-12H10V12Z"/> <path fill="currentColor" d="M112 12h28v28h-7V19h-21v-7Zm0 35h7v14h14V47h7v21h-28V47Z"/> <circle cx="112" cy="40" r="3.5" fill="currentColor"/> </symbol><symbol id="art-overview" viewBox="0 0 120 64"> <path fill="currentColor" d="M9 9h10v10H9zM25 11h64v5H25zM9 27h80v5H9zM9 40h58v5H9zM9 53h42v3H9z"/> <path fill="none" stroke="none" stroke-width="3" d="M96 10h15v15M110 11 91 30"/> </symbol><symbol id="art-experiments" viewBox="0 0 120 64"> <path fill="none" stroke="none" stroke-width="4" d="M10 45c12-25 23 16 35-11s22 20 34-8 20 5 31-15"/> <circle cx="10" cy="45" r="5" fill="currentColor"/><circle cx="45" cy="34" r="5" fill="currentColor"/><circle cx="79" cy="26" r="5" fill="currentColor"/><circle cx="110" cy="11" r="5" fill="currentColor"/> <path fill="currentColor" d="M10 54h100v3H10z"/> </symbol><symbol id="art-prototypes" viewBox="0 0 120 64"> <path fill="none" stroke="none" stroke-width="3" d="M10 11h34v18H10zM51 11h59v18H51zM10 36h59v18H10zM76 36h34v18H76z"/> <path fill="currentColor" d="M15 16h15v3H15zM56 16h28v3H56zM15 41h33v3H15zM81 41h15v3H81z"/> </symbol><symbol id="art-notes" viewBox="0 0 120 64"> <path fill="none" stroke="none" stroke-width="3" d="M13 8h75l19 19v29H13zM88 8v19h19"/> <path fill="currentColor" d="M23 20h47v4H23zM23 32h65v4H23zM23 44h49v4H23z"/> </symbol></defs></svg>
+<main class="shell" id="home">
+  <nav class="topbar" aria-label="SideBOX status"><a class="home" href="#home">Home</a><span class="domain">sidebox.scalablestudio.online</span><span class="live">Concept online</span></nav>
+  <section class="hero">
+    <div><p class="eyebrow">Scaleable Studio · digital proving ground</p><h1>Side<span>BOX</span></h1><p class="hero-copy"><strong>Test it. Prove it. Build what survives.</strong> SideBOX is the testing, proving and development ground for anything digital for Scaleable Studio.</p></div>
+    <div class="hero-stage"><canvas id="hero3d" aria-label="Cinematic SideBOX link tiles in a dark studio"></canvas><div class="fallback" id="hero-fallback" hidden>WebGL is unavailable. The full link page and flat visual system remain usable below.</div><span class="stage-tag">three.js r147 / ACES / UnrealBloom / live scan</span></div>
+  </section>
+  <section class="frame"><div><b>What this is</b><p>A working chamber for digital experiments, prototypes and proof—not a polished claim that every idea is already finished.</p></div><div><b>What we are asking</b><p>Approve one visual direction, confirm the link destinations and decide who may enter SideBOX.</p></div></section>
+  <div class="boards">
+    <section class="board wide" id="links"><p class="kicker">SideBOX / repository folders</p><h2>Open a box.</h2><p class="intro">Each folder added to the SideBOX repository becomes a link here on the next build.</p><div class="links"><a class="linkcard" href="Bible-Vision-Boards/"><span class="glyph">01</span><span><b>Bible Vision Boards</b><small>Open the Bible Vision Boards folder.</small></span><span class="arrow">↗</span></a>
+</div></section>
+  </div>
+  <footer><span>SideBOX / Signal Chamber</span><span>Folders generated from the repository · 2026-11-04</span></footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/shaders/CopyShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/environments/RoomEnvironment.js"></script>
+<script>
+window.HERO3D={canvas:'hero3d',fallback:'hero-fallback',plan:{width:360,height:220},table:'#071116',paper:'#10252c',burn:'#edf4ef',ember:[.25,2.1,2.4],exposure:1.12,pxPerMm:14,objects:[{type:'card',art:'sidebox',x:18,y:18,w:150,h:72,rot:-4},{type:'card',art:'overview',x:190,y:18,w:120,h:64,rot:3},{type:'card',art:'experiments',x:35,y:117,w:120,h:64,rot:2},{type:'card',art:'prototypes',x:173,y:103,w:120,h:64,rot:-2},{type:'card',art:'notes',x:225,y:178,w:90,h:48,rot:4}]};
+</script>
+<script>// hero3d.js: a cinematic 3D hero for vision boards (Workshop\VisionBoard\modules).
+// Needs three.js r147 and its examples (EffectComposer, RenderPass, ShaderPass, UnrealBloomPass, CopyShader,
+// LuminosityHighPassShader, RoomEnvironment) loaded first, and the board's ART symbols (art-name) in the page.
+// Reads window.HERO3D:
+//   { canvas: 'id', fallback: 'id of element to show if WebGL fails', stillButton: 'id', stillView: 'id',
+//     plan: { width, height } (mm), table: '#hex', paper: '#hex', burn: '#hex', ember: [r,g,b] (HDR, can exceed 1),
+//     objects: [ { type: 'card'|'envelope', art: 'symbol name', x, y, w, h (mm, top-left on the plan),
+//                  rot (degrees), paper: 'seed' for seed paper } ] }
+// Look: studio environment light, warm key + cool rim, soft shadows, ACES film tone mapping, Unreal-style bloom,
+// a laser head that sweeps each card and leaves an ember afterglow in the engraving, drifting seed-light particles.
+(function () {
+  'use strict';
+  var C = window.HERO3D;
+  if (!C) return;
+  var canvas = document.getElementById(C.canvas);
+  function fail(why) {
+    if (canvas) canvas.hidden = true;
+    var fb = C.fallback && document.getElementById(C.fallback);
+    if (fb) fb.hidden = false;
+    if (window.console) console.warn('hero3d: ' + why);
+  }
+  if (!canvas) return;
+  if (!window.THREE || !THREE.EffectComposer || !THREE.UnrealBloomPass) { fail('three.js did not load'); return; }
+
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, powerPreference: 'high-performance', preserveDrawingBuffer: false });
+  } catch (e) { fail('WebGL unavailable'); return; }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.outputEncoding = THREE.LinearEncoding;   // the final pass below does tone mapping and sRGB
+  var maxAniso = renderer.capabilities.getMaxAnisotropy();
+
+  var scene = new THREE.Scene();
+  var tableCol = new THREE.Color(C.table || '#0c0f14');
+  scene.background = tableCol.clone().multiplyScalar(0.55);
+  scene.fog = new THREE.Fog(scene.background, 520, 1100);
+
+  var pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new THREE.RoomEnvironment(), 0.04).texture;
+
+  var camera = new THREE.PerspectiveCamera(30, 16 / 9, 10, 3000);
+  var camBase = new THREE.Vector3(0, 340, 300);
+  var look = new THREE.Vector3(0, 0, 8);
+
+  // --- light ---
+  var key = new THREE.SpotLight(0xffe2c0, 2.6, 0, 0.62, 0.85, 1.2);
+  key.position.set(-230, 430, 190);
+  key.target.position.set(10, 0, 0);
+  key.castShadow = true;
+  key.shadow.mapSize.set(4096, 4096);
+  key.shadow.camera.near = 200; key.shadow.camera.far = 900;
+  key.shadow.bias = -0.00025; key.shadow.radius = 4;
+  scene.add(key, key.target);
+  var rim = new THREE.DirectionalLight(0x7fb4ff, 0.9);
+  rim.position.set(260, 160, -320);
+  scene.add(rim);
+  scene.add(new THREE.HemisphereLight(0x8aa0c0, 0x1a120c, 0.25));
+
+  // --- table ---
+  var tableTex = (function () {
+    var c = document.createElement('canvas'); c.width = c.height = 1024;
+    var g = c.getContext('2d');
+    g.fillStyle = '#' + tableCol.getHexString(); g.fillRect(0, 0, 1024, 1024);
+    for (var i = 0; i < 26000; i++) {
+      var v = Math.random();
+      g.fillStyle = 'rgba(255,255,255,' + (v * 0.035).toFixed(3) + ')';
+      g.fillRect(Math.random() * 1024, Math.random() * 1024, 1 + Math.random() * 2, 1);
+    }
+    var t = new THREE.CanvasTexture(c);
+    t.encoding = THREE.sRGBEncoding; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(3, 3); t.anisotropy = maxAniso;
+    return t;
+  })();
+  var table = new THREE.Mesh(new THREE.PlaneGeometry(2400, 2400),
+    new THREE.MeshStandardMaterial({ map: tableTex, roughness: 0.78, metalness: 0.05, envMapIntensity: 0.6 }));
+  table.rotation.x = -Math.PI / 2;
+  table.receiveShadow = true;
+  scene.add(table);
+
+  // --- helpers ---
+  var cx = (C.plan && C.plan.width || 370) / 2, cz = (C.plan && C.plan.height || 218) / 2;
+  var PXMM = C.pxPerMm || 14;              // texture density: 14 px per mm (about 4K for the whole set)
+  var burn = C.burn || '#4a2d1b', paper = C.paper || '#f7f6f1';
+
+  function artSvg(name, color) {
+    var sym = document.getElementById('art-' + name);
+    if (!sym) return null;
+    return { viewBox: sym.getAttribute('viewBox'), src: 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="' + sym.getAttribute('viewBox') + '" style="color:' + color + '">' + sym.innerHTML + '</svg>') };
+  }
+  function loadImg(src) {
+    return new Promise(function (res, rej) { var i = new Image(); i.onload = function () { res(i); }; i.onerror = rej; i.src = src; });
+  }
+  function paperCanvas(w, h, kind, pxmm) {
+    var d = pxmm || PXMM, f = d / 14;          // fibre and fleck sizes follow the density, so detail scales up
+    var c = document.createElement('canvas'); c.width = Math.round(w * d); c.height = Math.round(h * d);
+    var g = c.getContext('2d');
+    g.fillStyle = kind === 'seed' ? '#efe8d8' : paper; g.fillRect(0, 0, c.width, c.height);
+    var n = Math.round(w * h * 2.2);           // paper fibre: about 2 per square mm at any density
+    for (var i = 0; i < n; i++) {
+      g.fillStyle = 'rgba(90,70,40,' + (Math.random() * 0.05).toFixed(3) + ')';
+      g.fillRect(Math.random() * c.width, Math.random() * c.height, (1 + Math.random() * 3) * f, f);
+    }
+    if (kind === 'seed') {                      // seed and petal flecks
+      var cols = ['#d98aa0', '#e6c24a', '#7d9a5a', '#b88a5a', '#c66f8a'];
+      for (var j = 0; j < w * h * 0.11; j++) {
+        g.fillStyle = cols[j % cols.length];
+        g.beginPath(); g.arc(Math.random() * c.width, Math.random() * c.height, (0.6 + Math.random() * 2.2) * f, 0, 6.283); g.fill();
+      }
+    }
+    return c;
+  }
+  // Card textures at a given density (px per mm). The glow map can be coarser (emScale) since it is blurred by bloom.
+  function makeTextures(rec, pxmm, emScale, mips) {
+    var o = rec.o, top = rec.top;
+    var base = paperCanvas(o.w, o.h, o.paper, pxmm);
+    if (rec.imgs) {
+      var gc = base.getContext('2d');
+      gc.save(); gc.filter = 'blur(' + (pxmm * 0.12).toFixed(1) + 'px)'; gc.globalAlpha = 0.35;   // light scorch halo
+      gc.drawImage(rec.imgs[0], 0, 0, base.width, base.height); gc.restore();
+      gc.drawImage(rec.imgs[0], 0, 0, base.width, base.height);
+    }
+    var oldMap = top.map, oldEm = top.emissiveMap;
+    top.map = tex(base, true);
+    if (rec.imgs) {
+      var em = document.createElement('canvas');
+      em.width = Math.max(1, Math.round(base.width * (emScale || 1))); em.height = Math.max(1, Math.round(base.height * (emScale || 1)));
+      var ec = em.getContext('2d'); ec.fillStyle = '#000'; ec.fillRect(0, 0, em.width, em.height);
+      ec.drawImage(rec.imgs[1], 0, 0, em.width, em.height);
+      top.emissiveMap = tex(em, false);
+      top.emissiveIntensity = 1;
+    }
+    [top.map, top.emissiveMap].forEach(function (t) {
+      if (t && mips === false) { t.generateMipmaps = false; t.minFilter = THREE.LinearFilter; }
+    });
+    top.needsUpdate = true;
+    if (oldMap) oldMap.dispose();
+    if (oldEm && oldEm !== top.emissiveMap) oldEm.dispose();
+  }
+  function tex(c, srgb) {
+    var t = new THREE.CanvasTexture(c);
+    t.encoding = srgb ? THREE.sRGBEncoding : THREE.LinearEncoding;
+    t.anisotropy = maxAniso;
+    return t;
+  }
+  function shadowTex() {                        // soft contact shadow under each object
+    var c = document.createElement('canvas'); c.width = c.height = 256;
+    var g = c.getContext('2d');
+    for (var s = 0; s < 40; s++) {               // stacked soft rectangles = a blur that works in every browser
+      var m = 48 - s * 1.1;
+      g.fillStyle = 'rgba(0,0,0,0.035)';
+      g.fillRect(m + 40, m + 40, 256 - 2 * (m + 40), 256 - 2 * (m + 40));
+    }
+    return tex(c, false);
+  }
+  var contact = shadowTex();
+  function addContact(group, w, h, strength) {
+    var m = new THREE.Mesh(new THREE.PlaneGeometry(w * 1.32, h * 1.32 + 10),
+      new THREE.MeshBasicMaterial({ map: contact, transparent: true, opacity: strength, depthWrite: false }));
+    m.rotation.x = -Math.PI / 2; m.position.y = 0.05;
+    group.add(m);
+  }
+
+  // --- objects ---
+  var cards = [];
+  var edgeMat = new THREE.MeshStandardMaterial({ color: 0xdedbd2, roughness: 0.9 });
+  var E = C.ember || [1.0, 0.42, 0.12];
+  var ember = new THREE.Color(E[0], E[1], E[2]);
+  var loads = [];
+
+  (C.objects || []).forEach(function (o, idx) {
+    var g = new THREE.Group();
+    g.position.set(o.x + o.w / 2 - cx, 0, o.y + o.h / 2 - cz);
+    g.rotation.y = THREE.MathUtils.degToRad(-(o.rot || 0));
+    scene.add(g);
+
+    if (o.type === 'envelope') {
+      var kraft = new THREE.MeshStandardMaterial({ color: 0xb98b5c, roughness: 0.92 });
+      var body = new THREE.Mesh(new THREE.BoxGeometry(o.w, 1.2, o.h), kraft);
+      body.position.y = 0.6; body.castShadow = body.receiveShadow = true; g.add(body);
+      var s = new THREE.Shape(); s.moveTo(-o.w / 2, 0); s.lineTo(o.w / 2, 0); s.lineTo(0, o.w * 0.33); s.closePath();
+      var flap = new THREE.Mesh(new THREE.ShapeGeometry(s), new THREE.MeshStandardMaterial({ color: 0xa47648, roughness: 0.92, side: THREE.DoubleSide }));
+      flap.rotation.x = -Math.PI / 2; flap.position.set(0, 0.5, -o.h / 2); flap.castShadow = true; g.add(flap);
+      var seam = new THREE.Mesh(new THREE.PlaneGeometry(o.w * 0.98, o.h * 0.5),
+        new THREE.MeshStandardMaterial({ color: 0x9c7247, roughness: 0.95, transparent: true, opacity: 0.35 }));
+      seam.rotation.x = -Math.PI / 2; seam.position.set(0, 1.22, o.h * 0.24); g.add(seam);
+      addContact(g, o.w, o.h, 0.7);
+      return;
+    }
+
+    // card: thin board, artwork on top, engraving glows when the laser passes
+    var T = 0.35;
+    var uniforms = { uSweep: { value: 2 } };
+    var top = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.82, metalness: 0, emissive: ember, emissiveIntensity: 0 });   // glow switches on once the artwork is loaded
+    top.onBeforeCompile = function (sh) {
+      sh.uniforms.uSweep = uniforms.uSweep;
+      sh.fragmentShader = sh.fragmentShader
+        .replace('#include <common>', '#include <common>\nuniform float uSweep;')
+        .replace('#include <emissivemap_fragment>', [
+          '#include <emissivemap_fragment>',
+          'float dS = vUv.y - uSweep;',
+          'float band = smoothstep(0.018, 0.0, abs(dS));',
+          'float trail = dS > 0.0 ? exp(-dS * 7.0) : 0.0;',
+          'totalEmissiveRadiance *= band * 7.0 + trail * 1.8;'
+        ].join('\n'));
+    };
+    var mats = [edgeMat, edgeMat, edgeMat, edgeMat, top, edgeMat];
+    var mesh = new THREE.Mesh(new THREE.BoxGeometry(o.w, o.h, T), mats);
+    mesh.rotation.x = -Math.PI / 2;
+    mesh.position.y = T / 2 + 0.15 + idx * 0.02;
+    mesh.castShadow = mesh.receiveShadow = true;
+    g.add(mesh);
+    addContact(g, o.w, o.h, 0.55);
+    var rec = { o: o, group: g, mesh: mesh, uniforms: uniforms, top: top, imgs: null };
+    cards.push(rec);
+    makeTextures(rec, Math.min(PXMM, 6), 1);   // plain paper at once, artwork when it has loaded
+    var a = artSvg(o.art, burn), b = artSvg(o.art, '#ffffff');
+    if (!a) return;
+    loads.push(Promise.all([loadImg(a.src), loadImg(b.src)]).then(function (imgs) {
+      rec.imgs = imgs;
+      makeTextures(rec, PXMM, 1);
+    }));
+  });
+
+  // --- laser head ---
+  var head = new THREE.Group();
+  var dot = new THREE.Mesh(new THREE.SphereGeometry(0.9, 16, 12), new THREE.MeshBasicMaterial({ color: new THREE.Color(6, 2.4, 0.7) }));
+  var beam = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 140, 8, 1, true),
+    new THREE.MeshBasicMaterial({ color: new THREE.Color(1.6, 0.55, 0.15), transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending, depthWrite: false }));
+  beam.position.y = 70;
+  var glowLight = new THREE.PointLight(0xff8a3d, 3.5, 70, 2);
+  glowLight.position.y = 3;
+  head.add(dot, beam, glowLight);
+  scene.add(head);
+
+  // --- seed-light particles ---
+  var N = 700, P = new Float32Array(N * 3), V = new Float32Array(N), COL = new Float32Array(N * 3);
+  var warm = new THREE.Color(1.6, 1.1, 0.45), green = new THREE.Color(0.7, 1.5, 0.75);
+  for (var i = 0; i < N; i++) {
+    P[i * 3] = (Math.random() - 0.5) * 620; P[i * 3 + 1] = Math.random() * 260; P[i * 3 + 2] = (Math.random() - 0.5) * 420;
+    V[i] = 3 + Math.random() * 9;
+    var c0 = Math.random() < 0.72 ? warm : green, k = 0.4 + Math.random() * 0.8;
+    COL[i * 3] = c0.r * k; COL[i * 3 + 1] = c0.g * k; COL[i * 3 + 2] = c0.b * k;
+  }
+  var pg = new THREE.BufferGeometry();
+  pg.setAttribute('position', new THREE.BufferAttribute(P, 3));
+  pg.setAttribute('color', new THREE.BufferAttribute(COL, 3));
+  var spr = (function () {
+    var c = document.createElement('canvas'); c.width = c.height = 64;
+    var g = c.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+    gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.25, 'rgba(255,255,255,0.55)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, 64, 64);
+    return tex(c, false);
+  })();
+  var points = new THREE.Points(pg, new THREE.PointsMaterial({ size: 2.6, map: spr, vertexColors: true, transparent: true,
+    depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true }));
+  scene.add(points);
+
+  // --- post: HDR target, Unreal-style bloom, then ACES film tone mapping + sRGB ---
+  var rt = new THREE.WebGLRenderTarget(16, 16, { type: THREE.HalfFloatType, samples: 4 });
+  var composer = new THREE.EffectComposer(renderer, rt);
+  composer.addPass(new THREE.RenderPass(scene, camera));
+  var bloom = new THREE.UnrealBloomPass(new THREE.Vector2(16, 16), 0.85, 0.55, 0.92);
+  composer.addPass(bloom);
+  composer.addPass(new THREE.ShaderPass({
+    // uFull / uOrigin / uTile place this frame inside a bigger picture (tiled 32K render), so the vignette is the
+    // whole picture's, not each tile's. For a normal frame they are (1,1) / (0,0) / (1,1).
+    uniforms: { tDiffuse: { value: null }, uExposure: { value: C.exposure || 1.05 }, uTime: { value: 0 },
+      uFull: { value: new THREE.Vector2(1, 1) }, uOrigin: { value: new THREE.Vector2(0, 0) }, uTile: { value: new THREE.Vector2(1, 1) } },
+    vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
+    fragmentShader: [
+      'uniform sampler2D tDiffuse; uniform float uExposure; uniform float uTime; uniform vec2 uFull; uniform vec2 uOrigin; uniform vec2 uTile; varying vec2 vUv;',
+      'vec3 aces(vec3 x){ return clamp((x*(2.51*x+0.03))/(x*(2.43*x+0.59)+0.14),0.0,1.0); }',
+      'float hash(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233)) + uTime) * 43758.5453); }',
+      'void main(){',
+      '  vec3 c = texture2D(tDiffuse, vUv).rgb * uExposure;',
+      '  c = aces(c);',
+      '  vec2 fUv = (uOrigin + vUv * uTile) / uFull;',
+      '  float v = smoothstep(1.15, 0.35, length(fUv - 0.5) * 1.35);',        // vignette
+      '  c *= mix(0.55, 1.0, v);',
+      '  c = pow(c, vec3(1.0/2.2));',
+      '  c += (hash(gl_FragCoord.xy * 0.37 + uOrigin * 0.37) - 0.5) / 255.0;', // dither, no banding
+      '  gl_FragColor = vec4(c, 1.0);',
+      '}'
+    ].join('\n')
+  }));
+  var post = composer.passes[composer.passes.length - 1];
+
+  function size(w, h, pr) {
+    renderer.setPixelRatio(pr);
+    renderer.setSize(w, h, false);
+    composer.setPixelRatio(pr);
+    composer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.fov = w / h < 1.2 ? 44 : 30;
+    camera.updateProjectionMatrix();
+  }
+  function fit() {
+    var r = canvas.getBoundingClientRect();
+    size(Math.max(1, Math.round(r.width)), Math.max(1, Math.round(r.height)), Math.min(window.devicePixelRatio || 1, 2));
+  }
+  fit();
+  window.addEventListener('resize', fit);
+
+  // --- motion ---
+  var pointer = { x: 0, y: 0 };
+  canvas.addEventListener('pointermove', function (e) {
+    var r = canvas.getBoundingClientRect();
+    pointer.x = (e.clientX - r.left) / r.width - 0.5; pointer.y = (e.clientY - r.top) / r.height - 0.5;
+  });
+  var order = cards.filter(function (c) { return c.o.art; });
+  var tmp = new THREE.Vector3();
+  var SPEED = 0.055;                            // seconds per mm of card height
+  // each card in turn: the laser sweeps it top to bottom, then rests; passed engraving cools from ember to dark
+  var REST = 1.2, sched = [], cycle = 0;
+  order.forEach(function (c) { var d = c.o.h * SPEED; sched.push({ c: c, start: cycle, dur: d }); cycle += d + REST; });
+  function laserAt(t) {
+    if (!sched.length) { head.visible = false; return; }
+    var tt = t % cycle, active = null;
+    sched.forEach(function (s) {
+      var v;
+      if (tt < s.start) v = 1.2;                                        // not reached yet
+      else if (tt < s.start + s.dur) { v = 1.02 - (tt - s.start) / s.dur * 1.04; active = s; }
+      else v = -0.02 - (tt - s.start - s.dur) * 0.18;                     // finished: afterglow fades
+      s.c.uniforms.uSweep.value = v;
+    });
+    head.visible = !!active;
+    if (!active) return;
+    var local = tt - active.start, f = local / active.dur;
+    var rows = local * 6, u = rows % 1; if (Math.floor(rows) % 2) u = 1 - u;   // raster back and forth
+    tmp.set((u - 0.5) * active.c.o.w * 0.9, 0, -((1.02 - f * 1.04) - 0.5) * active.c.o.h);
+    active.c.group.localToWorld(tmp);
+    head.position.set(tmp.x, 0.6, tmp.z);
+  }
+
+  var clock = new THREE.Clock(), running = true, visible = true, last = 0;
+  function frame() { update(); composer.render(); }
+  function update() {
+    var t = clock.getElapsedTime();
+    var dt = Math.min(Math.max(t - last, 0), 0.05); last = t;
+    if (!reduce) {
+      laserAt(t);
+      var arr = pg.attributes.position.array;
+      for (var i = 0; i < N; i++) {
+        arr[i * 3 + 1] += V[i] * dt;
+        arr[i * 3] += Math.sin(t * 0.6 + i) * 0.05;
+        if (arr[i * 3 + 1] > 260) arr[i * 3 + 1] = 0;
+      }
+      pg.attributes.position.needsUpdate = true;
+      camera.position.set(camBase.x + Math.sin(t * 0.07) * 26 + pointer.x * 30, camBase.y + pointer.y * -14, camBase.z + Math.cos(t * 0.05) * 10);
+    } else {
+      laserAt(sched.length ? sched[Math.min(2, sched.length - 1)].start + sched[Math.min(2, sched.length - 1)].dur * 0.45 : 0);
+      camera.position.copy(camBase);
+    }
+    camera.lookAt(look);
+    post.uniforms.uTime.value = t % 10;
+  }
+  function loop() {
+    if (running && visible) frame();
+    if (!reduce) requestAnimationFrame(loop);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(canvas);
+  }
+  Promise.all(loads).catch(function () {}).then(function () { frame(); });
+  frame();
+  if (!reduce) requestAnimationFrame(loop);
+
+  // --- 4K still: 3840 x 2160 ---
+  var btn = C.stillButton && document.getElementById(C.stillButton);
+  var view = C.stillView && document.getElementById(C.stillView);
+  // Saving: in the claude.ai viewer through its downloads capability (the viewer confirms); opened as a local
+  // file, through a normal browser download. Either way the picture is also shown full screen.
+  var downloads = null;
+  if (window.claude && typeof window.claude.use === 'function') {
+    window.claude.use('downloads').then(function (d) { downloads = d; }, function () {});
+  }
+  var inFrame = false; try { inFrame = window.self !== window.top; } catch (e) { inFrame = true; }
+  if (btn) btn.addEventListener('click', function () {
+    btn.disabled = true; var label = btn.textContent; btn.textContent = 'Rendering 3840 x 2160...';
+    var name = (C.stillName || 'vision-board-hero') + '-3840x2160.png';
+    setTimeout(function () {
+      running = false;
+      size(3840, 2160, 1);
+      frame();
+      var blobReady = new Promise(function (res) { canvas.toBlob(res, 'image/png'); });   // snapshot taken now
+      var url = canvas.toDataURL('image/png');
+      fit(); running = true;
+      btn.disabled = false; btn.textContent = label;
+      if (view) { view.querySelector('img').src = url; view.hidden = false; }
+      blobReady.then(function (blob) {
+        if (!blob) return;
+        if (downloads) {
+          downloads.save({ filename: name, data: blob }).catch(function () { /* declined or unavailable: the picture stays on screen */ });
+        } else if (!inFrame) {
+          var a = document.createElement('a'); a.href = url; a.download = name;
+          document.body.appendChild(a); a.click(); a.remove();
+        }
+      }).catch(function () {});
+    }, 30);
+  });
+  if (view) view.addEventListener('click', function (e) { if (e.target === view || e.target.closest('[data-close]')) view.hidden = true; });
+
+  // --- 32K still: 30720 x 17280, rendered in tiles and written straight into one PNG ---
+  // The scene is frozen at one moment, then drawn as a grid of tiles (default 8 x 16 of 3840 x 1080, each with a
+  // margin that is cut off so glow and shadows don't show seams). Each tile row is compressed as it is made
+  // (CompressionStream 'deflate' = PNG's zlib data), so the full 2 GB picture is never held in memory at once.
+  // Card textures are rebuilt at BIG.pxPerMm (capped by the GPU's largest texture) for the export, then put back.
+  var bigBtn = C.bigButton && document.getElementById(C.bigButton);
+  var bigStatus = C.bigStatus && document.getElementById(C.bigStatus);
+  var BIG = C.big || {};
+  var BW = BIG.w || 30720, BH = BIG.h || 17280, TW = BIG.tileW || 3840, TH = BIG.tileH || 1080, MARGIN = BIG.margin || 192;
+  function say(msg) { if (bigStatus) bigStatus.textContent = msg; }
+  function later() { return new Promise(function (r) { setTimeout(r, 0); }); }
+  var CRC = (function () {
+    var t = new Uint32Array(256);
+    for (var n = 0; n < 256; n++) { var c = n; for (var k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; }
+    return t;
+  })();
+  function crc32(parts) {
+    var c = 0xffffffff;
+    parts.forEach(function (b) { for (var i = 0; i < b.length; i++) c = CRC[(c ^ b[i]) & 255] ^ (c >>> 8); });
+    return (c ^ 0xffffffff) >>> 0;
+  }
+  function pngChunk(type, data) {
+    var t = new Uint8Array([type.charCodeAt(0), type.charCodeAt(1), type.charCodeAt(2), type.charCodeAt(3)]);
+    var len = new Uint8Array(4), crc = new Uint8Array(4);
+    new DataView(len.buffer).setUint32(0, data.length);
+    new DataView(crc.buffer).setUint32(0, crc32([t, data]));
+    return new Blob([len, t, data, crc]);
+  }
+  function render32k() {
+    if (typeof CompressionStream === 'undefined') {
+      say('This browser cannot build the 32K file (it needs a current Chrome, Edge, Firefox or Safari).');
+      return Promise.resolve();
+    }
+    running = false; bigBtn.disabled = true;
+    var gl = renderer.getContext(), maxTex = renderer.capabilities.maxTextureSize;
+    var baseSize = points.material.size, oldShadow = key.shadow.mapSize.x, started = Date.now();
+    var cols = Math.ceil(BW / TW), rows = Math.ceil(BH / TH), total = cols * rows, done = 0;
+    var rowBytes = 1 + BW * 3, buf = null;
+    var cs = new CompressionStream('deflate'), writer = cs.writable.getWriter(), idat = [];
+    var reading = (async function () {
+      var rd = cs.readable.getReader();
+      for (;;) { var x = await rd.read(); if (x.done) break; idat.push(pngChunk('IDAT', x.value)); }
+    })();
+    function restore() {
+      camera.clearViewOffset();
+      points.material.size = baseSize;
+      post.uniforms.uFull.value.set(1, 1); post.uniforms.uOrigin.value.set(0, 0); post.uniforms.uTile.value.set(1, 1);
+      cards.forEach(function (rec) { if (rec.imgs) makeTextures(rec, PXMM, 1); });
+      if (key.shadow.mapSize.x !== oldShadow) { key.shadow.mapSize.set(oldShadow, oldShadow); if (key.shadow.map) { key.shadow.map.dispose(); key.shadow.map = null; } }
+      fit(); running = true; bigBtn.disabled = false;
+    }
+    return (async function () {
+      say('Preparing sharper card textures...'); await later();
+      cards.forEach(function (rec) {
+        if (!rec.imgs) return;
+        var d = Math.min(BIG.pxPerMm || 64, Math.floor(maxTex / Math.max(rec.o.w, rec.o.h)));
+        makeTextures(rec, d, 0.5, false);
+      });
+      var sm = Math.min(8192, maxTex);
+      if (sm > oldShadow) { key.shadow.mapSize.set(sm, sm); if (key.shadow.map) { key.shadow.map.dispose(); key.shadow.map = null; } }
+      size(TW + 2 * MARGIN, TH + 2 * MARGIN, 1);
+      update();                                   // freeze one moment: laser, particles and camera stay put
+      for (var r = 0; r < rows; r++) {
+        var th = Math.min(TH, BH - r * TH), strip = new Uint8Array(th * rowBytes);
+        for (var c = 0; c < cols; c++) {
+          var tw = Math.min(TW, BW - c * TW), x0 = c * TW - MARGIN, y0 = r * TH - MARGIN;
+          var w = tw + 2 * MARGIN, h = th + 2 * MARGIN;
+          size(w, h, 1);
+          camera.aspect = BW / BH; camera.fov = 30;
+          camera.setViewOffset(BW, BH, x0, y0, w, h);
+          camera.updateProjectionMatrix();
+          post.uniforms.uFull.value.set(BW, BH); post.uniforms.uOrigin.value.set(x0, BH - (y0 + h)); post.uniforms.uTile.value.set(w, h);
+          points.material.size = baseSize * BH / h;
+          composer.render();
+          if (!buf || buf.length !== w * h * 4) buf = new Uint8Array(w * h * 4);
+          gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, buf);   // same task as the render: buffer still valid
+          for (var y = 0; y < th; y++) {
+            var src = ((h - 1 - (MARGIN + y)) * w + MARGIN) * 4, dst = y * rowBytes + 1 + c * TW * 3;
+            for (var x = 0; x < tw; x++, src += 4, dst += 3) { strip[dst] = buf[src]; strip[dst + 1] = buf[src + 1]; strip[dst + 2] = buf[src + 2]; }
+          }
+          done++;
+          say('Rendering 32K: tile ' + done + ' of ' + total + '...');
+          await later();
+        }
+        await writer.write(strip);
+      }
+      say('Finishing the PNG file...');
+      await writer.close(); await reading;
+      var ihdr = new Uint8Array(13), dv = new DataView(ihdr.buffer);
+      dv.setUint32(0, BW); dv.setUint32(4, BH); ihdr[8] = 8; ihdr[9] = 2; ihdr[10] = 0; ihdr[11] = 0; ihdr[12] = 0;
+      var png = new Blob([new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10]), pngChunk('IHDR', ihdr)].concat(idat, [pngChunk('IEND', new Uint8Array(0))]), { type: 'image/png' });
+      var mb = (png.size / 1048576).toFixed(0), secs = Math.round((Date.now() - started) / 1000);
+      restore();
+      var name = (C.stillName || 'vision-board-hero') + '-30720x17280.png';
+      if (downloads) {
+        say('Done: ' + BW + ' × ' + BH + ', ' + mb + ' MB in ' + secs + ' s. Confirm the save in the box that opens.');
+        downloads.save({ filename: name, data: png }).then(function () { say('Saved: ' + name + ' (' + mb + ' MB).'); },
+          function (e) { say('Not saved' + (e && e.code ? ' (' + e.code + ')' : '') + '. Open the board from the file on your computer to save it there.'); });
+      } else if (!inFrame) {
+        var a = document.createElement('a'); a.href = URL.createObjectURL(png); a.download = name;
+        document.body.appendChild(a); a.click(); a.remove();
+        say('Done: ' + BW + ' × ' + BH + ', ' + mb + ' MB in ' + secs + ' s. Check your Downloads folder.');
+      } else {
+        say('Done, but this view cannot save files. Open the board from the file on your computer to save it.');
+      }
+    })().catch(function (e) {
+      restore();
+      say('The 32K render stopped: ' + (e && e.message ? e.message : e) + '. This computer may not have enough graphics memory.');
+    });
+  }
+  if (bigBtn) bigBtn.addEventListener('click', function () { render32k(); });
+})();
+</script>
+
+</body>
+</html>
