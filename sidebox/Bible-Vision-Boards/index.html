@@ -7,9 +7,20 @@
   <style>
     :root{color-scheme:dark;font-family:"Segoe UI",system-ui,sans-serif;background:#071116;color:#edf4ef}
     body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px}
-    main{width:min(680px,100%);border:1px solid #24434a;padding:40px;background:#0c1b22}
-    p{color:#9db0ad;line-height:1.65}a{color:#c7ff4a}
+    main{width:min(680px,100%);border:1px solid #24434a;padding:40px;background:#0c1b22;box-sizing:border-box}
+    p,small{color:#9db0ad;line-height:1.65}a{color:#c7ff4a}
+    h1{text-wrap:balance}
+    .boards{display:grid;gap:12px;margin:24px 0 32px}
+    .board{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 18px;border:1px solid #24434a;
+      background:#0f2229;color:#edf4ef;text-decoration:none}
+    .board:hover,.board:focus-visible{border-color:#c7ff4a;outline:none}
+    .board b{display:block;font-weight:600}.board small{display:block;font-size:13px}
+    .n{font:500 12px/1 "IBM Plex Mono",ui-monospace,monospace;color:#ff6f59}.go{font-size:13px;color:#c7ff4a}
   </style>
 </head>
-<body><main><p>SideBOX / Folder 01</p><h1>Bible Vision Boards</h1><p>This folder is ready for its first board.</p><a href="../">Return to SideBOX</a></main></body>
+<body><main><p>SideBOX / Folder</p><h1>Bible Vision Boards</h1>
+    <div class="boards">
+      <a class="board" href="sowing-faith-vboard-1k.html"><span class="n">01</span><span><b>Sowing Faith Vision Boards</b><small>Plantable prayer cards: the first vision board, built 2026-11-03 from the bus1idea blueprint.</small></span><span class="go">Open</span></a>
+    </div>
+    <a href="../">Return to SideBOX</a></main></body>
 </html>
