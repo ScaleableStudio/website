@@ -12,8 +12,9 @@
 // Optional settings, per folder (all fields optional):
 //   sidebox.json  {"title": "...", "description": "...", "order": 1, "keepIndex": true}
 //                 keepIndex: the folder has its own index.html; publish it unchanged.
-//   boards.json   {"<page>.html": {"description": "...", "order": 1, "listed": false}}
-//                 Titles come from each page's <title>; description falls back to its meta description.
+//   boards.json   {"<page>.html": {"title": "...", "description": "...", "order": 1, "listed": false}}
+//                 title: the name shown in the list; without it, the page's own <title> is used.
+//                 description falls back to the page's meta description.
 //                 listed:false keeps a page online by direct link but off the list.
 
 const fs = require('fs');
@@ -63,7 +64,7 @@ for (const f of folders) {
     .map(n => {
       const html = fs.readFileSync(path.join(f.dir, n), 'utf8');
       const m = meta[n] || {};
-      const title = unesc(((html.match(/<title>([^<]*)<\/title>/i) || [])[1] || pretty(n.replace(/\.html?$/i, ''))).trim());
+      const title = m.title || unesc(((html.match(/<title>([^<]*)<\/title>/i) || [])[1] || pretty(n.replace(/\.html?$/i, ''))).trim());
       const desc = m.description || unesc((html.match(/<meta\s+name="description"\s+content="([^"]*)"/i) || [])[1] || '');
       return { file: n, title, description: desc, order: num(m.order) };
     })

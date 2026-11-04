@@ -1,25 +1,26 @@
 {
-  "sowing-faith-vboard-1k.html": {
-    "description": "Plantable prayer cards: the first vision board, built 2026-11-03 from the bus1idea blueprint.",
-    "order": 7
-  },
   "the_gospel_unified_electric_purple_vision-board.html": {
+    "title": "The Gospel Unified | Rom 1-11, Eph 1-3, Col 1-2",
     "description": "The same unified board in electric purple.",
     "order": 2
   },
   "romans_1-11_electric-cyan_vision-board.html": {
+    "title": "Righteousness of God | Romans 1-11 (KJV)",
     "description": "Romans chapters 1–11, King James Version.",
     "order": 3
   },
   "ephesians_1-3_electric-cyan_vision-board.html": {
+    "title": "Chosen IN Christ | Ephesians 1-3 (KJV)",
     "description": "Ephesians chapters 1–3, King James Version.",
     "order": 4
   },
   "colossians_1-2_electric-cyan_vision-board.html": {
+    "title": "Christ above All, Christ in You | Colossians 1-2 (KJV)",
     "description": "Colossians chapters 1–2, King James Version.",
     "order": 5
   },
   "isaiah_43_18-19_biblical_covenant_hero_updated.html": {
+    "title": "Behold, I Will Do a New Thing | Isaiah 43:18-19 (KJV)",
     "description": "Interactive Biblical Covenant board on Isaiah 43:18–19, KJV.",
     "order": 6
   }
