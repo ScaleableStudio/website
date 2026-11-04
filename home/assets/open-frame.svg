@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Scaleable Studio Open Frame</title>
+  <desc id="desc">An open square with a brass path extending through its upper-right corner.</desc>
+  <path d="M104 78v30H20V20h62" fill="none" stroke="#F2EBDD" stroke-width="10" stroke-linecap="square"/>
+  <path d="M58 72 105 25M78 25h27v27" fill="none" stroke="#B58A45" stroke-width="10" stroke-linecap="square"/>
+</svg>
