@@ -1,7 +1,7 @@
 {
   "sowing-faith-vboard-1k.html": {
     "description": "Plantable prayer cards: the first vision board, built 2026-11-03 from the bus1idea blueprint.",
-    "order": 6
+    "order": 7
   },
   "the_gospel_unified_electric_purple_vision-board.html": {
     "description": "The same unified board in electric purple.",
@@ -21,7 +21,6 @@
   },
   "isaiah_43_18-19_biblical_covenant_hero_updated.html": {
     "description": "Interactive Biblical Covenant board on Isaiah 43:18–19, KJV.",
-    "listed": false,
-    "note": "Clean Sinner brand page; awaiting Ken on charter rule 8"
+    "order": 6
   }
 }
