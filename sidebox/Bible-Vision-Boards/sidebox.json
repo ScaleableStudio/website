@@ -1,5 +1,6 @@
 {
   "title": "Bible Vision Boards",
   "description": "Open the Bible Vision Boards folder.",
-  "status": "Folder"
+  "status": "Folder",
+  "order": 1
 }
